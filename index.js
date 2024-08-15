@@ -18,5 +18,22 @@ const List = document.getElementById("itemList")
 Button.addEventListener("click",function(){
     let value = InputField.value
     push(MoviesInDB,value)
-    List.innerHTML += `<li>${value}</li>`
+
+    ClearInput();
+
+    SetValues(value);
 })
+
+function ClearInput(){
+     InputField.value = ""
+}
+
+function SetValues(Input){
+    List.innerHTML += `<li>${Input}</li>`
+}
+
+// let scrimbaUser = {
+//     "00": "exampleEmail@email.com",
+//     "01": "exampleEmail2@email.com",
+//     "02": "exampleEmail@email.com"
+// }

@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 body,html{
     margin: 0;
     padding: 0;
     background-color: #EEF0F4;
-    font-family: 'Rubik','sans-serif';
+    font-family: "Work Sans", sans-serif;
 }
 
 .container {
@@ -26,7 +27,7 @@ input{
     border-radius: 8px;
     font-size: 20px;
     text-align: center;
-    font-family: 'Rubik','sans-serif';
+    font-family: "Work Sans", sans-serif;
     margin-bottom: 10px;
 }
 
@@ -38,5 +39,5 @@ button{
     border-radius: 8px;
     font-size: 20px;
     text-align: center;
-    font-family: 'Rubik','sans-serif';
+    font-family: "Work Sans", sans-serif;
 }
