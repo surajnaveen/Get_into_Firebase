@@ -23,10 +23,17 @@ Button.addEventListener("click",function(){
 })
 
 onValue(MoviesInDB,function(snapshot){
-    let bookArry = Object.values(snapshot.val())
+    let bookArry = Object.entries(snapshot.val())
+    let CurruntID,CurruntValue
+
     ClearItemLists()    //Clear list before add other values
+
     bookArry.forEach(function(elements) {
-        SetValues(elements)
+        CurruntValue = elements[1]
+        CurruntID = elements[0]
+
+        console.log(CurruntID)
+        SetValues(CurruntValue)
     })
 })
 
@@ -39,5 +46,9 @@ function ClearInput(){
 }
 
 function SetValues(Input){
-    List.innerHTML += `<li>${Input}</li>`
+    //List.innerHTML += `<li>${Input}</li>`
+
+    let newElement = document.createElement("li")
+    newElement.textContent = Input
+    List.append(newElement)
 }
