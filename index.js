@@ -20,17 +20,19 @@ Button.addEventListener("click",function(){
     push(MoviesInDB,value)
 
     ClearInput();
-
-    SetValues(value);
 })
 
 onValue(MoviesInDB,function(snapshot){
     let bookArry = Object.values(snapshot.val())
-
+    ClearItemLists()    //Clear list before add other values
     bookArry.forEach(function(elements) {
         SetValues(elements)
     })
 })
+
+function ClearItemLists(){
+    List.innerHTML = "" 
+}
 
 function ClearInput(){
      InputField.value = ""
