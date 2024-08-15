@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"
-import { getDatabase,ref,push } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"
+import { getDatabase,ref,push,onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://realtime-database-b2b90-default-rtdb.asia-southeast1.firebasedatabase.app/"
@@ -24,6 +24,15 @@ Button.addEventListener("click",function(){
     SetValues(value);
 })
 
+onValue(MoviesInDB,function(snapshot){
+    let bookArry = Object.values(snapshot.val())
+
+    //console.log(bookArry)
+    bookArry.forEach(function(elements) {
+        console.log(elements)
+    })
+})
+
 function ClearInput(){
      InputField.value = ""
 }
@@ -31,9 +40,3 @@ function ClearInput(){
 function SetValues(Input){
     List.innerHTML += `<li>${Input}</li>`
 }
-
-// let scrimbaUser = {
-//     "00": "exampleEmail@email.com",
-//     "01": "exampleEmail2@email.com",
-//     "02": "exampleEmail@email.com"
-// }
