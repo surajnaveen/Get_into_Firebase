@@ -27,9 +27,8 @@ Button.addEventListener("click",function(){
 onValue(MoviesInDB,function(snapshot){
     let bookArry = Object.values(snapshot.val())
 
-    //console.log(bookArry)
     bookArry.forEach(function(elements) {
-        console.log(elements)
+        SetValues(elements)
     })
 })
 
