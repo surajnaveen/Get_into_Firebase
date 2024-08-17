@@ -7,7 +7,7 @@ const appSettings = {
 
 const app = initializeApp(appSettings)
 const database = getDatabase(app)
-const MoviesInDB = ref(database,"Movies")
+const CartInDB = ref(database,"Shopping-cart")
 
 
 const Button = document.getElementById("add-button")
@@ -27,14 +27,14 @@ Button.addEventListener("click",function(){
         showPopup();
     } else {
         let value = InputField.value
-        push(MoviesInDB,value)
+        push(CartInDB,value)
 
         ClearInput();
     }
     
 })
 
-onValue(MoviesInDB,function(snapshot){
+onValue(CartInDB,function(snapshot){
 
     if (snapshot.exists()) {
         let bookArry = Object.entries(snapshot.val())
@@ -69,7 +69,7 @@ function SetValues(Input){
     let newElement = document.createElement("li")
     newElement.textContent = itemName
     newElement.addEventListener("click",function(){
-        let location = ref(database,`Movies/${itemID}`)
+        let location = ref(database,`Shopping-cart/${itemID}`)
         remove(location)
     })
     List.append(newElement)

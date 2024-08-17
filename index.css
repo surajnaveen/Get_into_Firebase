@@ -34,7 +34,7 @@ input{
 
 button{
     color: #fdfdfd;
-    background-color: #AC485A;
+    background-color: #F54C47;
     border: 0;
     padding: 15px;
     border-radius: 8px;
@@ -46,7 +46,7 @@ button{
 }
 
 button:hover{
-    color: #AC485A;
+    color: #F56A47;
     background-color: #fdfdfd;
     cursor: pointer;
     transition: 0.2s;
@@ -58,6 +58,7 @@ ul{
     flex-wrap: wrap;
     gap: 10px;
     text-align: center;
+
 }
 
 ul li{
@@ -72,9 +73,10 @@ ul li{
 }
 
 ul li:hover{
-    background-color: #ffecc7;
+    background-color: #F58947;
+    color:#EEF0F4;
     cursor:pointer;
-    transition: 0.2ms;
+    transition: 0.2s;
 }
 
 #popup {
