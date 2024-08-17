@@ -15,6 +15,7 @@ const InputField = document.getElementById("input-field")
 const List = document.getElementById("itemList")
 const PopupClosingBtn = document.getElementById("closeBtn")
 const AlertMassage = document.getElementById("warning")
+const EmptyMasssage = document.getElementById("cartMsg")
 
 PopupClosingBtn.addEventListener("click",function () {
     closePopup();
@@ -38,6 +39,7 @@ onValue(MoviesInDB,function(snapshot){
     if (snapshot.exists()) {
         let bookArry = Object.entries(snapshot.val())
 
+        EmptyMasssage.innerHTML = ""
         ClearItemLists()    //Clear list before add other values
 
         bookArry.forEach(function(elements) {
@@ -45,7 +47,8 @@ onValue(MoviesInDB,function(snapshot){
         })
     }
     else{
-        List.innerHTML = "No items here.. yet"
+        ClearItemLists()
+        EmptyMasssage.innerHTML = "Cart is empty"
     }
 })
 
