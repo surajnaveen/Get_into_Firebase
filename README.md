@@ -4,7 +4,7 @@
 "Pocket Cart" is a simple and efficient shopping cart application built using Firebase Realtime Database. This project allows users to add, remove, and manage items in their shopping cart in real-time. The use of Firebase Realtime Database ensures that the cart's data is always synchronized and up-to-date across multiple devices.
 
 ## Try web app
-- [Features](https://voluble-conkies-0ed96e.netlify.app/)
+- [Click here](https://voluble-conkies-0ed96e.netlify.app/)
 
 ## Features
 - **Real-time Synchronization**: Updates to the cart are instantly reflected across all devices.
