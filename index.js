@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"
-import { getDatabase,ref,push,onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"
+import { getDatabase,ref,push,onValue,remove } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://realtime-database-b2b90-default-rtdb.asia-southeast1.firebasedatabase.app/"
@@ -8,7 +8,6 @@ const appSettings = {
 const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const MoviesInDB = ref(database,"Movies")
-//console.log(database)
 
 
 const Button = document.getElementById("add-button")
@@ -23,22 +22,23 @@ Button.addEventListener("click",function(){
 })
 
 onValue(MoviesInDB,function(snapshot){
-    let bookArry = Object.entries(snapshot.val())
-    let CurruntID,CurruntValue
 
-    ClearItemLists()    //Clear list before add other values
+    if (snapshot.exists()) {
+        let bookArry = Object.entries(snapshot.val())
 
-    bookArry.forEach(function(elements) {
-        CurruntValue = elements[1]
-        CurruntID = elements[0]
+        ClearItemLists()    //Clear list before add other values
 
-        console.log(CurruntID)
-        SetValues(CurruntValue)
-    })
+        bookArry.forEach(function(elements) {
+            SetValues(elements)
+        })
+    }
+    else{
+        List.innerHTML = "No items here.. yet"
+    }
 })
 
 function ClearItemLists(){
-    List.innerHTML = "" 
+    List.innerHTML = ""
 }
 
 function ClearInput(){
@@ -46,9 +46,16 @@ function ClearInput(){
 }
 
 function SetValues(Input){
+    //console.log(Input)
+    let itemID = Input[0]
+    let itemName = Input[1]
     //List.innerHTML += `<li>${Input}</li>`
 
     let newElement = document.createElement("li")
-    newElement.textContent = Input
+    newElement.textContent = itemName
+    newElement.addEventListener("click",function(){
+        let location = ref(database,`Movies/${itemID}`)
+        remove(location)
+    })
     List.append(newElement)
 }
