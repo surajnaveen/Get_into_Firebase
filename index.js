@@ -13,12 +13,24 @@ const MoviesInDB = ref(database,"Movies")
 const Button = document.getElementById("add-button")
 const InputField = document.getElementById("input-field")
 const List = document.getElementById("itemList")
+const PopupClosingBtn = document.getElementById("closeBtn")
+const AlertMassage = document.getElementById("warning")
+
+PopupClosingBtn.addEventListener("click",function () {
+    closePopup();
+})
 
 Button.addEventListener("click",function(){
-    let value = InputField.value
-    push(MoviesInDB,value)
+    
+    if (InputField.value=="") {
+        showPopup();
+    } else {
+        let value = InputField.value
+        push(MoviesInDB,value)
 
-    ClearInput();
+        ClearInput();
+    }
+    
 })
 
 onValue(MoviesInDB,function(snapshot){
@@ -58,4 +70,13 @@ function SetValues(Input){
         remove(location)
     })
     List.append(newElement)
+}
+
+function showPopup() {
+    AlertMassage.innerHTML = "Please enter an item"
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
 }
